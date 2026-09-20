@@ -423,11 +423,8 @@ The following are planned directions, **not current capabilities**.
 <div align="center">
 
 # HireFlow
-
 ### From resumes to traceable evidence.
-
 **AI organizes evidence. Humans make hiring decisions.**
 
-**Built for HackDay 1.0**
 
 </div>
