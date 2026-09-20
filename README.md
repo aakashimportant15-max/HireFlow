@@ -2,7 +2,9 @@
 
 # HireFlow: AI Candidate Screening & Interview Intelligence Agent
 
-### Evidence-backed AI recruiting workspace || From resumes to traceable evidence.
+<a href="https://github.com/aakashimportant15-max/HireFlow">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=20&duration=3000&pause=1400&color=38502A&center=true&vCenter=true&width=760&lines=Evidence-backed+AI+recruiting+workspace;From+resumes+to+traceable+evidence." alt="Evidence-backed AI recruiting workspace | From resumes to traceable evidence." />
+</a>
 
 **AI organizes evidence. Humans make hiring decisions.**
 
@@ -306,13 +308,13 @@ hireflow/
 ├── pages/
 ├── ui/
 │
-├── src/
-│   ├── 1.png
-│   ├── 2.png
-│   ├── 3.png
-│   ├── 4.png
-│   ├── 5.png
-│   └── 6.png
+├── scr/
+│   ├── 1..png
+│   ├── 2..png
+│   ├── 3..png
+│   ├── 4..png
+│   ├── 5..png
+│   └── 6..png
 │
 └── tests/
 ```
@@ -426,6 +428,6 @@ The following are planned directions, **not current capabilities**.
 
 **AI & Data Analytics Enthusiast | Python Developer | AI/ML Builder**
 
-📧 Email: [aakashimportant15@gmail.com](mailto:aakashimportant03@gmail.com)  
+📧 Email: [aakashimportant15@gmail.com](mailto:aakashimportant15@gmail.com)  
 🐙 GitHub: [aakashimportant15-max](https://github.com/aakashimportant15-max)  
 📦 Project Repository: [HireFlow](https://github.com/aakashimportant15-max/HireFlow)
