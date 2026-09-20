@@ -36,7 +36,6 @@ import logging
 import os
 import re
 import tempfile
-from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Optional
 
@@ -82,33 +81,52 @@ class PipelineConfigError(PipelineError):
     """A core module/function the pipeline expects is missing (developer-facing)."""
 
 
-@dataclass
 class UploadedDoc:
-    name: str
-    data: bytes
+    def __init__(self, name: str, data: bytes):
+        self.name = name
+        self.data = data
 
 
-@dataclass
 class CandidateOutcome:
-    file: str
-    name: str = ""
-    candidate_id: Optional[str] = None
-    status: str = "failed"  # processed | partial | skipped | failed
-    reason: str = ""
-    group: Optional[str] = None
-    n_mappings: int = 0
+    def __init__(
+        self,
+        file: str,
+        name: str = "",
+        candidate_id: Optional[str] = None,
+        status: str = "failed",
+        reason: str = "",
+        group: Optional[str] = None,
+        n_mappings: int = 0,
+    ):
+        self.file = file
+        self.name = name
+        self.candidate_id = candidate_id
+        self.status = status
+        self.reason = reason
+        self.group = group
+        self.n_mappings = n_mappings
 
 
-@dataclass
 class PipelineResult:
-    job_id: str
-    job_title: str
-    n_requirements: int
-    outcomes: list[CandidateOutcome] = field(default_factory=list)
-    n_mappings: int = 0
-    n_groups: int = 0
-    n_summaries: int = 0
-    audit_failures: int = 0
+    def __init__(
+        self,
+        job_id: str,
+        job_title: str,
+        n_requirements: int,
+        outcomes: Optional[list[CandidateOutcome]] = None,
+        n_mappings: int = 0,
+        n_groups: int = 0,
+        n_summaries: int = 0,
+        audit_failures: int = 0,
+    ):
+        self.job_id = job_id
+        self.job_title = job_title
+        self.n_requirements = n_requirements
+        self.outcomes = outcomes if outcomes is not None else []
+        self.n_mappings = n_mappings
+        self.n_groups = n_groups
+        self.n_summaries = n_summaries
+        self.audit_failures = audit_failures
 
     @property
     def n_processed(self) -> int:
