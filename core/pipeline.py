@@ -39,24 +39,19 @@ import tempfile
 from pathlib import Path
 from typing import Any, Callable, Optional
 
-from db.database import (
-    get_candidates,
-    save_audit_record,
-    save_candidate,
-    save_group,
-    save_job,
-    save_mapping,
-    save_summary,
-)
-from models.schemas import (
-    AuditAction,
-    AuditRecord,
-    CandidateGroup,
-    CandidateProfile,
-    Evidence,
-    JobDescription,
-    Mapping,
-)
+class _LazyModuleProxy:
+    """Lazily resolve modules to survive Streamlit multipage reload ordering."""
+
+    def __init__(self, module_name: str) -> None:
+        self._module_name = module_name
+
+    def __getattr__(self, name: str) -> Any:
+        module = importlib.import_module(self._module_name)
+        return getattr(module, name)
+
+
+_db = _LazyModuleProxy("db.database")
+_schemas = _LazyModuleProxy("models.schemas")
 
 logger = logging.getLogger("hireflow.pipeline")
 
@@ -82,7 +77,7 @@ class PipelineConfigError(PipelineError):
 
 
 class UploadedDoc:
-    def __init__(self, name: str, data: bytes):
+    def __init__(self, name: str, data: bytes) -> None:
         self.name = name
         self.data = data
 
@@ -97,7 +92,7 @@ class CandidateOutcome:
         reason: str = "",
         group: Optional[str] = None,
         n_mappings: int = 0,
-    ):
+    ) -> None:
         self.file = file
         self.name = name
         self.candidate_id = candidate_id
@@ -118,7 +113,7 @@ class PipelineResult:
         n_groups: int = 0,
         n_summaries: int = 0,
         audit_failures: int = 0,
-    ):
+    ) -> None:
         self.job_id = job_id
         self.job_title = job_title
         self.n_requirements = n_requirements
@@ -238,8 +233,8 @@ class _Audit:
             source: Optional[str] = None, output: Optional[str] = None,
             evidence: Optional[list[Evidence]] = None) -> None:
         try:
-            save_audit_record(
-                AuditRecord(
+            _db.save_audit_record(
+                _schemas.AuditRecord(
                     action=action, entity_type=entity_type, entity_id=entity_id,
                     candidate_id=candidate_id, job_id=job_id, source=source,
                     output=output, evidence=evidence or [], model=MODEL_NAME,
@@ -282,6 +277,11 @@ def process_documents(
     DatabaseError (JD could not be saved). Per-resume problems never raise;
     they are reported in `PipelineResult.outcomes`.
     """
+    # Import schemas only when the actual pipeline execution starts. This
+    # keeps page import/reload independent from Streamlit's package rebuild
+    # order.
+    from models.schemas import AuditAction, CandidateGroup
+
     audit = _Audit()
     total_steps = 1 + max(len(resumes), 1)
 
@@ -300,7 +300,7 @@ def process_documents(
     if not job.source_file:
         job.source_file = jd.name
 
-    save_job(job)
+    _db.save_job(job)
     audit.log(AuditAction.EXTRACT_JD, "JobDescription", entity_id=job.job_id, job_id=job.job_id,
               source=f"JD: {jd.name}", output=f"{len(job.requirements)} requirements extracted")
     _safe_progress(on_progress, f"Job saved: {job.title} ({len(job.requirements)} requirements)", 1 / total_steps)
@@ -314,7 +314,7 @@ def process_documents(
     # key = (resume fingerprint, job_id)
     seen: dict[tuple[str, str], str] = {}
     try:
-        for c in get_candidates():
+        for c in _db.get_candidates():
             if not c.raw_text:
                 continue
 
@@ -323,8 +323,7 @@ def process_documents(
             # requirements instead of treating the resume as globally duplicate.
             existing_mappings = []
             try:
-                from db.database import get_mappings
-                existing_mappings = get_mappings(
+                existing_mappings = _db.get_mappings(
                     candidate_id=c.candidate_id,
                     job_id=job.job_id,
                     latest_only=True,
@@ -376,7 +375,7 @@ def process_documents(
                 profile.resume_source = doc.name
             outcome.name, outcome.candidate_id = profile.name, profile.candidate_id
 
-            save_candidate(profile)
+            _db.save_candidate(profile)
             # Do NOT mark the resume as globally duplicate. It is only
             # duplicate for this specific job after job-specific mappings exist.
             seen[duplicate_key] = profile.name
@@ -396,7 +395,7 @@ def process_documents(
             if not mappings:
                 raise PipelineError("No requirement mappings were produced for this candidate.")
             for m in mappings:
-                save_mapping(m)
+                _db.save_mapping(m)
                 audit.log(AuditAction.MAP_REQUIREMENT, "Mapping", entity_id=m.requirement_id,
                           candidate_id=profile.candidate_id, job_id=job.job_id,
                           source=f"Resume: {doc.name}",
@@ -408,7 +407,7 @@ def process_documents(
             note("grouping", 0.7)
             raw_group = _stage_group(profile, job, mappings)
             group = raw_group if isinstance(raw_group, CandidateGroup) else CandidateGroup(str(raw_group))
-            save_group(profile.candidate_id, group, job_id=job.job_id)
+            _db.save_group(profile.candidate_id, group, job_id=job.job_id)
             outcome.group = group.value
             result.n_groups += 1
             audit.log(AuditAction.GROUP_CANDIDATE, "CandidateGroup", entity_id=profile.candidate_id,
@@ -420,7 +419,7 @@ def process_documents(
             if not summary.candidate_name or summary.candidate_name == "Unknown":
                 summary.candidate_name = profile.name
             summary.group = group
-            save_summary(summary, job_id=job.job_id)
+            _db.save_summary(summary, job_id=job.job_id)
             result.n_summaries += 1
             audit.log(AuditAction.SUMMARIZE_CANDIDATE, "CandidateSummary", entity_id=profile.candidate_id,
                       candidate_id=profile.candidate_id, job_id=job.job_id, output=summary.fit_summary[:300],
