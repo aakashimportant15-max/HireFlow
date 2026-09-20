@@ -23,7 +23,7 @@ HireFlow transforms job descriptions and candidate resumes into structured, trac
 
 ## Product at a Glance
 
-![HireFlow Dashboard](src/1.png)
+![HireFlow Dashboard](./src/1.png)
 
 ---
 
@@ -45,63 +45,76 @@ HireFlow transforms job descriptions and candidate resumes into structured, trac
 
 ---
 
-## The Problem
+## Problem Statement
 
-Recruiting information is fragmented across:
+### The Problem
 
-- Job descriptions
-- Resumes
-- Candidate experience and projects
-- Interview notes
-- Hiring requirements
+Recruiters and hiring teams review large numbers of resumes for every open role.
 
-The challenge isn't simply finding candidates. It is **organizing and validating the evidence behind candidate-requirement matches.**
+Important candidate information can be buried across resumes, portfolios, application forms and interview notes. Manual screening is repetitive and makes it harder to consistently compare candidate evidence against the actual requirements of a role.
 
-| Friction | Why it matters |
+Interviewers also spend time preparing questions and reviewing notes instead of focusing on candidate conversations.
+
+The core challenge is not simply finding candidates. It is **organizing, connecting and validating the evidence behind candidate-requirement matches while keeping human hiring decisions at the center.**
+
+| Recruitment friction | What HireFlow addresses |
 |---|---|
-| **Repetitive manual screening** | Recruiters repeatedly review similar documents against the same requirements. |
-| **Unstructured candidate information** | Skills, experience, education and projects are presented inconsistently across resumes. |
-| **Weak requirement-to-evidence traceability** | It can be difficult to see *why* a requirement was considered met, partial, unclear or missing. |
-| **Unclear or missing information** | Areas that need follow-up can be easy to overlook. |
-| **Resume and interview evidence kept apart** | Screening evidence and interview validation can become disconnected. |
+| **High-volume manual screening** | Structures candidate information against role requirements. |
+| **Information buried in documents** | Extracts relevant skills, experience, projects and qualifications into structured records. |
+| **Weak requirement-to-evidence traceability** | Maps candidate evidence to individual requirements and preserves the supporting evidence. |
+| **Missing or unclear information** | Surfaces areas that require validation and carries them into interview preparation. |
+| **Interview preparation overhead** | Creates role-specific questions and follow-ups around the candidate's evidence. |
+| **Disconnected interview evidence** | Keeps interview evidence tied to the same requirements while remaining distinct from resume evidence. |
 
 ---
 
 ## The Solution
 
-HireFlow creates an **evidence-first recruiting workflow**:
+HireFlow is an **AI-powered recruitment intelligence workspace** that turns the problem statement into an evidence-first workflow:
 
 ```text
-Job Description
-       ↓
-Requirement Extraction
-       ↓
-Candidate Evidence
-       ↓
-Requirement Mapping
-       ↓
-Screening Groups
-       ↓
-Targeted Interview
-       ↓
-Interview Evidence
-       ↓
-Auditable Report
+Job Description + Candidate Resumes
+                ↓
+        Requirement Extraction
+                ↓
+         Candidate Evidence
+                ↓
+        Requirement Mapping
+                ↓
+         Screening Groups
+                ↓
+      Candidate Summaries
+                ↓
+       Targeted Interview
+                ↓
+ Interview Evidence + Follow-ups
+                ↓
+      Standardized Report
+                ↓
+       Audit + Candidate Pool
 ```
 
 ### Extract
 
-Pull requirements and candidate information out of documents.
+Extract relevant skills, experience, projects, qualifications and job requirements from recruitment documents.
 
 ### Connect
 
-Link candidate evidence to individual job requirements.
+Map candidate evidence to specific job requirements and preserve the evidence behind each insight.
 
 ### Validate
 
-Surface unclear or missing areas and prepare targeted interview questions.
+Identify missing or unclear information, generate role-specific questions and create follow-ups for deeper validation.
 
-> HireFlow is designed to support human review rather than replace the human hiring decision.
+### Evaluate
+
+Bring resume and interview evidence together in a structured evaluation report without turning the workflow into an automated hiring decision.
+
+### Query
+
+Allow recruiters to explore the candidate pool using natural language and inspect the evidence behind results.
+
+> **The goal is to reduce repetitive recruitment work while keeping human hiring decisions at the center of the process.**
 
 ---
 
@@ -111,7 +124,7 @@ Surface unclear or missing areas and prepare targeted interview questions.
 
 A centralized workspace showing the candidate pipeline, system status, group distribution, and recent activity from the audit trail.
 
-![HireFlow Dashboard](src/1.png)
+![HireFlow Dashboard](./src/1.png)
 
 ---
 
@@ -119,7 +132,7 @@ A centralized workspace showing the candidate pipeline, system status, group dis
 
 Upload a job description and candidate resumes, or provide document text directly. HireFlow processes the inputs through ingestion, extraction, mapping, grouping and validation preparation.
 
-![Upload and Process](src/2.png)
+![Upload and Process](./src/2.png)
 
 ---
 
@@ -131,7 +144,7 @@ Review candidates against job requirements with requirement-level statuses:
 
 Candidates can be filtered by job, group or requirement status, with evidence available for review.
 
-![Candidate Review](src/3.png)
+![Candidate Review](./src/3.png)
 
 ---
 
@@ -141,7 +154,7 @@ Screening gaps are carried forward into targeted interview preparation so recrui
 
 Notes are recorded as interview evidence; they are not treated as automated hiring decisions.
 
-![Interview Preparation](src/4.png)
+![Interview Preparation](./src/4.png)
 
 ---
 
@@ -149,7 +162,7 @@ Notes are recorded as interview evidence; they are not treated as automated hiri
 
 Interview evidence is kept alongside the original resume evidence while remaining distinct, allowing findings to be traced back to the relevant requirement.
 
-![Interview Report](src/5.png)
+![Interview Report](./src/5.png)
 
 ---
 
@@ -157,7 +170,7 @@ Interview evidence is kept alongside the original resume evidence while remainin
 
 Ask questions about the candidate pool in plain language. HireFlow shows how it interpreted the query before showing matching candidates and the stored evidence behind those results.
 
-![Ask Pool](src/6.png)
+![Ask Pool](./src/6.png)
 
 > **Note:** The dashboard values visible in these screenshots reflect the demo database at the time of capture. They are separate from the verified real-data validation run below.
 
@@ -168,12 +181,12 @@ Ask questions about the candidate pool in plain language. HireFlow shows how it 
 | Stage | What happens |
 |---|---|
 | **1. Ingestion** | PDF, DOCX and TXT documents are converted into usable text. |
-| **2. Extraction** | Job requirements and candidate skills, experience, education and projects are extracted into structured records. |
+| **2. Extraction** | Job requirements and candidate skills, experience, education, projects and qualifications are extracted into structured records. |
 | **3. Requirement Mapping** | Each requirement is evaluated against candidate evidence and assigned `MET`, `PARTIAL`, `UNCLEAR` or `MISSING`. |
 | **4. Grouping** | Candidates are placed into explainable screening groups based on requirement evidence. |
 | **5. Candidate Summary** | A concise summary is generated for each candidate. |
 | **6. Interview Preparation** | Unclear, missing and partial areas become validation targets and question topics. |
-| **7. Interview Evaluation & Report** | Interview answers become additional evidence, kept separate from resume evidence but tied to the same requirements. |
+| **7. Interview Evaluation & Report** | Interview answers and notes become additional evidence, kept separate from resume evidence but tied to the same requirements; unanswered areas are surfaced for follow-up. |
 | **8. Audit** | Key pipeline actions and evidence are persisted for traceability. |
 | **9. Ask Pool** | Natural-language questions are translated into filters over stored candidate data. |
 
@@ -260,7 +273,7 @@ A real pipeline run was executed end to end against actual resumes.
 RESULT: PASS
 ```
 
-This validation demonstrates pipeline completion and database integrity for the tested run. It is **not** a claim about screening accuracy or hiring outcomes.
+This validation demonstrates pipeline completion and database integrity for the tested run. It is **not** a claim about screening accuracy, candidate quality or hiring outcomes.
 
 ---
 
@@ -287,35 +300,11 @@ hireflow/
 ├── README.md
 │
 ├── core/
-│   ├── ingestion.py
-│   ├── extraction.py
-│   ├── mapping.py
-│   ├── grouping.py
-│   ├── summary.py
-│   ├── interview.py
-│   ├── evaluation.py
-│   ├── pipeline.py
-│   └── pool_query.py
-│
 ├── db/
-│   └── database.py
-│
 ├── llm/
-│   ├── client.py
-│   └── prompts/
-│
 ├── models/
-│   └── schemas.py
-│
 ├── pages/
-│   ├── 1_Upload_Screen.py
-│   ├── 2_Candidates.py
-│   ├── 3_Interview_Prep.py
-│   ├── 4_Interview_Report.py
-│   └── 5_Ask_Pool.py
-│
 ├── ui/
-│   └── theme.py
 │
 ├── src/
 │   ├── 1.png
