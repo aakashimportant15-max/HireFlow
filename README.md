@@ -23,7 +23,7 @@ HireFlow transforms job descriptions and candidate resumes into structured, trac
 
 ## Product at a Glance
 
-![HireFlow Dashboard](./src/1.png)
+![HireFlow Dashboard](https://raw.githubusercontent.com/aakashimportant15-max/HireFlow/main/src/1.png)
 
 ---
 
@@ -124,7 +124,7 @@ Allow recruiters to explore the candidate pool using natural language and inspec
 
 A centralized workspace showing the candidate pipeline, system status, group distribution, and recent activity from the audit trail.
 
-![HireFlow Dashboard](./src/1.png)
+![HireFlow Dashboard](https://raw.githubusercontent.com/aakashimportant15-max/HireFlow/main/src/1.png)
 
 ---
 
@@ -132,7 +132,7 @@ A centralized workspace showing the candidate pipeline, system status, group dis
 
 Upload a job description and candidate resumes, or provide document text directly. HireFlow processes the inputs through ingestion, extraction, mapping, grouping and validation preparation.
 
-![Upload and Process](./src/2.png)
+![Upload and Process](https://raw.githubusercontent.com/aakashimportant15-max/HireFlow/main/src/2.png)
 
 ---
 
@@ -144,7 +144,7 @@ Review candidates against job requirements with requirement-level statuses:
 
 Candidates can be filtered by job, group or requirement status, with evidence available for review.
 
-![Candidate Review](./src/3.png)
+![Candidate Review](https://raw.githubusercontent.com/aakashimportant15-max/HireFlow/main/src/3.png)
 
 ---
 
@@ -154,7 +154,7 @@ Screening gaps are carried forward into targeted interview preparation so recrui
 
 Notes are recorded as interview evidence; they are not treated as automated hiring decisions.
 
-![Interview Preparation](./src/4.png)
+![Interview Preparation](https://raw.githubusercontent.com/aakashimportant15-max/HireFlow/main/src/4.png)
 
 ---
 
@@ -162,7 +162,7 @@ Notes are recorded as interview evidence; they are not treated as automated hiri
 
 Interview evidence is kept alongside the original resume evidence while remaining distinct, allowing findings to be traced back to the relevant requirement.
 
-![Interview Report](./src/5.png)
+![Interview Report](https://raw.githubusercontent.com/aakashimportant15-max/HireFlow/main/src/5.png)
 
 ---
 
@@ -170,7 +170,7 @@ Interview evidence is kept alongside the original resume evidence while remainin
 
 Ask questions about the candidate pool in plain language. HireFlow shows how it interpreted the query before showing matching candidates and the stored evidence behind those results.
 
-![Ask Pool](./src/6.png)
+![Ask Pool](https://raw.githubusercontent.com/aakashimportant15-max/HireFlow/main/src/6.png)
 
 > **Note:** The dashboard values visible in these screenshots reflect the demo database at the time of capture. They are separate from the verified real-data validation run below.
 
