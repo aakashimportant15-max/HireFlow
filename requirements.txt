@@ -1,0 +1,24 @@
+# UI
+streamlit>=1.40
+
+# Document parsing
+pymupdf>=1.24
+python-docx>=1.1
+
+# Data validation and schemas
+pydantic>=2.7
+
+# LLM (koi ek rakho)
+# LLM
+groq>=0.11
+# anthropic>=0.40
+# google-genai>=1.0       # agar Gemini use karna ho
+# openai>=1.50            # agar OpenAI use karna ho
+
+# Config and utilities
+python-dotenv>=1.0
+pandas>=2.2
+tenacity>=8.2             # LLM call retry ke liye
+
+# Testing (eval/run_eval.py ke liye)
+pytest>=8.0
