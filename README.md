@@ -1,6 +1,6 @@
 <div align="center">
 
-# HireFlow
+# HireFlow: AI Candidate Screening & Interview Intelligence Agent
 
 ### Evidence-backed AI recruiting workspace
 
@@ -422,7 +422,7 @@ The following are planned directions, **not current capabilities**.
 
 <div align="center">
 
-# HireFlow
+# HireFlow: AI Candidate Screening & Interview Intelligence Agent
 ### From resumes to traceable evidence.
 **AI organizes evidence. Humans make hiring decisions.**
 
