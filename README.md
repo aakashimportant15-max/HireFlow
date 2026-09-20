@@ -2,7 +2,7 @@
 
 # HireFlow: AI Candidate Screening & Interview Intelligence Agent
 
-### Evidence-backed AI recruiting workspace
+### Evidence-backed AI recruiting workspace || From resumes to traceable evidence.
 
 **AI organizes evidence. Humans make hiring decisions.**
 
@@ -429,13 +429,3 @@ The following are planned directions, **not current capabilities**.
 📧 Email: [aakashimportant15@gmail.com](mailto:aakashimportant03@gmail.com)  
 🐙 GitHub: [aakashimportant15-max](https://github.com/aakashimportant15-max)  
 📦 Project Repository: [HireFlow](https://github.com/aakashimportant15-max/HireFlow)
-
----
-<div align="center">
-
-# HireFlow: AI Candidate Screening & Interview Intelligence Agent
-### From resumes to traceable evidence.
-**AI organizes evidence. Humans make hiring decisions.**
-
-
-</div>
