@@ -8,7 +8,7 @@ Thin orchestrator used by pages/1_Upload_Screen.py.
 It contains NO extraction / mapping / grouping logic of its own. It only calls
 your core modules, saves their output through db/database.py and writes the
 audit trail in ONE place.
-
+ 
 >>> IMPORTANT: the core modules' function names/signatures are declared in
 >>> ADAPTERS below plus the small `_stage_*` helpers. If your modules use other
 >>> names or argument orders, change them HERE (one line each), nowhere else.
