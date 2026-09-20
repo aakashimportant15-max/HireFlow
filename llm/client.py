@@ -8,7 +8,7 @@ HireFlow ka central LLM gateway.
 
 Is file ka poora purpose: project ke kisi bhi aur part ko Groq SDK se
 directly deal na karna pade. Yahan hai:
-
+ 
     - Groq client initialization (API key .env se)
     - Ek common gateway function: `generate(...)`
     - Prompt file loading (prompts/*.txt), prompt content yahan nahi likha
